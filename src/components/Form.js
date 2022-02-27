@@ -54,20 +54,24 @@ export class Form extends Component {
     render(){
         return(
             <div id="form-conatiner">
-                {!this.state.clicked && <><h1>EMPLOYEE FEEDBACK FORM</h1>
-                <form>
-                    <label className="form_elements" htmlFor="name">Name :</label>
-                    <input className="input_box form_elements" type="text" id="name" value={this.state.value} name="name" onChange={this.onInputChange}/>
-                    <br />
-                    <label className="form_elements" htmlFor="dept">Department :</label>
-                    <input className="input_box form_elements" type="text" name="dept" value={this.state.value} id="dept" onChange={this.onInputChange}/>
-                    <br />
-                    <label className="form_elements" htmlFor="rate">Rating :</label>
-                    <input className="input_box form_elements" type="number" id="rate" value={this.state.value} name="rating" onChange={this.onInputChange}/>
-                    <br />
-                    <button className="dynamic_button" type="submit" onClick={this.onFormSubmit.bind(this)}>Submit</button>
-                </form></>}
-                { this.state.clicked && <EmpData data={this.state.array} toggleFunc={this.toggleFormClick} />}
+                {!this.state.clicked ? 
+                <>
+                    <h1>EMPLOYEE FEEDBACK FORM</h1>
+                    <form>
+                        <label className="form_elements" htmlFor="name">Name :</label>
+                        <input className="input_box form_elements" type="text" id="name" value={this.state.value} name="name" onChange={this.onInputChange}/>
+                        <br />
+                        <label className="form_elements" htmlFor="dept">Department :</label>
+                        <input className="input_box form_elements" type="text" name="dept" value={this.state.value} id="dept" onChange={this.onInputChange}/>
+                        <br />
+                        <label className="form_elements" htmlFor="rate">Rating :</label>
+                        <input className="input_box form_elements" type="number" id="rate" value={this.state.value} name="rating" onChange={this.onInputChange}/>
+                        <br />
+                        <button className="dynamic_button" type="submit" onClick={this.onFormSubmit.bind(this)}>Submit</button>
+                    </form>
+                </> : 
+                    <EmpData data={this.state.array} toggleFunc={this.toggleFormClick} />
+                    }
             </div>
         )
     }
